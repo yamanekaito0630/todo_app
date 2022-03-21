@@ -18,6 +18,6 @@ Route::resource("goals", "App\Http\Controllers\GoalController");
 
 Route::resource("goals.todos", "App\Http\Controllers\TodoController");
 
-Route::post('/goals/{goal}/todos/{todo}/sort', 'App\Http\Controllers\TodoController@sort');
+Route::post('/goals/{goal}/todos/{todo}/sort', 'App\Http\Controllers\TodoController@sort')->middleware('auth');
 
 Auth::routes();
