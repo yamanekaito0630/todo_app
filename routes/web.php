@@ -20,4 +20,6 @@ Route::resource("goals.todos", "App\Http\Controllers\TodoController");
 
 Route::post('/goals/{goal}/todos/{todo}/sort', 'App\Http\Controllers\TodoController@sort')->middleware('auth');
 
+Route::resource("tags", "App\Http\Controllers\TagController")->middleware('auth');
+
 Auth::routes();
