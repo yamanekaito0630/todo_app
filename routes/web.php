@@ -1,7 +1,4 @@
 <?php
-
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +10,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'App\Http\Controllers\HomeController@index');
+
+Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+
+Route::resource("goals", "App\Http\Controllers\GoalController");
+
+Route::resource("goals.todos", "App\Http\Controllers\TodoController");
+
+Route::post('/goals/{goal}/todos/{todo}/sort', 'App\Http\Controllers\TodoController@sort');
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
